@@ -195,21 +195,19 @@
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">add category</div></button>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
-  <div class="modal-content" style="   width: 670px; height: 636px;     padding: 27px;">
+  <form action="Categorys/index"method="POST">
+  <div class="modal-content" style="   width: 670px; height: 406px;     padding: 27px;">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
       <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label" style="color:black ">name</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1" class="form-label" style="color:black " required >name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"name="name_category">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
-  
- 
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+   
     <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -217,7 +215,7 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="submit" class="btn btn-primary">add</button>
       </div>
   </div>
 
