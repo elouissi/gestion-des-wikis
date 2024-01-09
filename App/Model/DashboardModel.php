@@ -23,4 +23,7 @@ class DashboardModel  extends Crud  {
     public function getAlltags(){
         return $this->read("tags");
     }
+    public function getAllcategorys(){
+        return $this->read("categorys");
+    }
 }

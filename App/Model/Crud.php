@@ -25,7 +25,7 @@ class Crud
             $stmt = $this->conn->getConnection()->prepare($query);
             $stmt->execute($data);
 
-            echo "Record added successfully!";
+          
         } catch (PDOException $e) {
             echo "Error creating record: " . $e->getMessage();
         }
@@ -55,26 +55,27 @@ class Crud
                 $update_arr[] = "$column = :$column";
             }
             $update_arr = implode(", ", $update_arr);
-
-            $query = "UPDATE $tableName SET $update_arr WHERE id = :id";
+    
+            $query = "UPDATE $tableName SET $update_arr WHERE wikiId = :id";
             $data['id'] = $id;
-
-            $stmt = $this->pdo->prepare($query);
+    
+            $stmt = $this->conn->getConnection()->prepare($query);
             $stmt->execute($data);
-
-            echo "Record updated successfully!";
+                  
+             echo "Record updated successfully!";
         } catch (PDOException $e) {
             echo "Error updating record: " . $e->getMessage();
         }
     }
+    
 
     public function delete($tableName, $id)
     {
         try {
-            $query = "DELETE FROM $tableName WHERE ID = :id";
+            $query = "DELETE FROM $tableName WHERE wikiId = :id";
 
             // Prepare and execute the SQL statement
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->conn->getConnection()->prepare($query);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -85,4 +86,13 @@ class Crud
             echo "Error deleting record: " . $e->getMessage();
         }
     }
+    public function selectWhere()
+    {
+        $sql = "SELECT * FROM wikis WHERE status = 'publish'";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+   
+    
 }

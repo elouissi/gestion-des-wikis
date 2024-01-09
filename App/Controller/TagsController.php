@@ -1,10 +1,15 @@
-<?php 
+<?php
 namespace App\Controller;
-use App\Controller\Controller;
+use App\Controller\Controller; 
+use App\Model\WikisModel;
+use App\Model\TagsModel;
 use App\Model\DashboardModel;
 
-class DashboardController     {
+class TagsController extends DashboardController{
     public function index() {
+        $name_tag=$_POST['name_tag'];
+
+ 
         $users = new DashboardModel;
         $users = $users->getallusers();
 
@@ -16,17 +21,10 @@ class DashboardController     {
 
         $categorys = new DashboardModel;
         $categorys = $categorys->getallcategorys();
+        $Tags = new TagsModel;
+        $allTags = $Tags->add_tags($name_tag);
         
-       
-        include "../app/View/Dashboard.php";
-       
- 
+        include '../app/View/dashboard.php';
     }
-    
-    
-     
+}
 
-   
-    }
-
- 

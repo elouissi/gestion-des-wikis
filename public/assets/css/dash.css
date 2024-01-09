@@ -16,7 +16,7 @@ body{
 .menu{
     width: 3.5rem;
     height: 100vh;
-    background-color: #333;
+    background-color: #2eff04;
     padding: .3rem;
     color: #fff;
     overflow: hidden;
@@ -39,6 +39,10 @@ body{
     flex-direction: column;
 
     
+}
+td{
+    color: #3d9bed;
+    background-color: #3d9bed;
 }
 
 .menu__list__item__profile{
@@ -63,7 +67,7 @@ body{
     display: inline-block;
     width: 2.5rem;
     height: 2.5rem;
-    border: solid #868383 .2rem;
+    border: solid #3d9bed .2rem;
     border-radius: 50%;
 }
 .menu__profile h3{
@@ -84,7 +88,7 @@ body{
 }
 
 .menu__list__item a:hover{
-    background-color: #868383;
+    background-color: #3d9bed;
     
 }
 .menu__list__item__logout {
@@ -113,7 +117,7 @@ body{
     width: 100%;
     padding: .5rem;
     border-radius: .5rem;
-    background-color: #0481ff;
+    background-color: #2eff04;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -136,7 +140,7 @@ body{
 
     height: 10rem;
     padding: 1rem;
-    background: #333;
+    background: #3d9bed;
     border-radius: .5rem;
 
     display: flex;

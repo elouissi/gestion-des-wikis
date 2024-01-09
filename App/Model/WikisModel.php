@@ -15,7 +15,26 @@ class WikisModel extends Crud  {
  
     public function getallwikis()
     {
-        return $this->read("wikis");
+        return $this->selectWhere();
+    }
+    public function acceptewikis($id)
+    {
+        $updateData = [
+            'status' => 'publish'
+        ];
+        return $this->update("wikis",  $updateData ,$id);
+    }
+    public function  hashwikis($id){
+
+        $hashData = [
+            'status' => 'hashing'
+        ];
+        return $this->update("wikis", $hashData , $id);
+    }
+    public function deletewikis($id)
+    {
+        
+        return $this->delete("wikis" ,$id);
     }
     
 }

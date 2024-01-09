@@ -11,5 +11,4 @@ class HomeController {
         include '../app/View/home.php';
     }
 }
-?>
 

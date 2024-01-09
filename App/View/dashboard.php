@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="public/assets/css/dash.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="<?= URL_DIR ?>public/assets/css/dash.css">
+     <title>Document</title>
 </head>
 
 
@@ -19,9 +19,9 @@
         <ul class="menu__list">
             <li class="menu__list__item menu__list__item__profile">
                 <div class="menu__profile">
-                    <img src="/assets/images/profile.jpg" alt="">
+                    <img src="<?= URL_DIR ?>public/assets/images/nadi.JPG" alt="">
                 </div>
-                <h4 class="menu__profile__name">Yssine elouissi</h4>
+                <h4 class="menu__profile__name">Yassine elouissi</h4>
             </li>
             <li class="menu__list__item">
                 <a href="">
@@ -43,7 +43,7 @@
 
     </div>
 
-
+            
     <main class="container">
         <div class="container__header">
             <h3>dashboard</h3>
@@ -75,16 +75,22 @@
                 <i class="fas fa-table"></i>
                 <div class="container__statistique__info">
                     <p>categories</p>
+                    <p class="container__statistique__detail"><?=count($categorys) ?></p>
                     
 
                 </div>
             </div>
+ 
+
+<!-- Modal -->
+
 
         </div>
         <div class="container__header">
             <h3>Wikis Statistiques</h3>
             <i class="fas fa-pen"></i>
         </div>
+    
 
         <table class="container__table">
             <thead>
@@ -107,32 +113,9 @@
                         <td><?=$wiki['description'] ?></td>
                         <td><?=$wiki['status'] ?></td>
                         <td>
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                voir wiki
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5 text-dark " id="exampleModalLabel"><?= $wiki['ttitle'] ?></h1>
-                                            <h1 class="modal-title fs-5 text-dark " id="exampleModalLabel"><?= $wiki['content'] ?></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body text-dark ">
-                                         
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a  href="" class="btn btn-outline-primary">accepter</a>
-                                            <a  href="" class="btn btn-outline-danger">supprimer</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <a href="Wikis/acceptewikis/?id=<?= $wiki['wikiId']?>"><div class="btn btn-outline-success">accpter</div></a>
+                            <a href="Wikis/deletewikis/?id=<?= $wiki['wikiId']?>"><div class="btn btn-outline-danger">supprimer</div></a>
+                            <a href="Wikis/hashwikis/?id=<?= $wiki['wikiId']?>"><div class="btn btn-outline-warning">hash</div></a>
                         </td>
                     </tr>
            <?php endforeach ?>
@@ -143,10 +126,44 @@
             <h3>Tags Statistiques</h3>
             <i class="fas fa-tag"></i>
         </div>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">add tag</div></button>
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="Tags/index"method="POST">
+  <div class="modal-content" style="   width: 670px; height: 436px;     padding: 27px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"style="color:black ">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" style="color:black ">name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="name_tag">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  
+    <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">add</button>
+      </div>
+  </div>
+
+    </div>
+    </div>
+  </div>
+</div>
+</form>
+
 
         <table class="container__table">
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>nom</th>
                     <th>actions</th>
                 </tr>
@@ -160,7 +177,8 @@
                  
                     <tr>
                         
-                        <td><?= $tag["nom_tag"] ?></td>
+                        <td><?= $tag["tagId"] ?></td>
+                        <td><?= $tag["name"] ?></td>
                         <td>
                             <div class="btn btn-outline-primary">modifier</div>
                             <div class="btn btn-outline-danger">supprimer</div>
@@ -171,26 +189,63 @@
         </table>
 
         <div class="container__header">
-            <h3>Tags Statistiques</h3>
+            <h3>categorys Statistiques</h3>
             <i class="fas fa-table"></i>
         </div>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">add category</div></button>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content" style="   width: 670px; height: 636px;     padding: 27px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" style="color:black ">name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  
+ 
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+    <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+  </div>
+
+    </div>
+    </div>
+  </div>
+</div>
 
         <table class="container__table">
             <thead>
                 <tr>
-                    <th>nom</th>
+                    <th>id</th>
+                    <th>name</th>
                     <th>actions</th>
                 </tr>
             </thead>
             <tbody>
-               
+            <?php foreach ($categorys as $category) : ?>
                     <tr>
-                        <td></td>
+                        <td><?= $category["categoryId"] ?></td>
+                        <td><?= $category["name"] ?></td>
+                  
                         <td>
                             <div class="btn btn-outline-primary">modifier</div>
                             <div class="btn btn-outline-danger">supprimer</div>
                         </td>
                     </tr>
+                    <?php endforeach; ?>
            
             </tbody>
         </table>
@@ -202,7 +257,8 @@
         <table class="container__table">
             <thead>
                 <tr>
-                    <th>nom</th>
+                    <th>id</th>
+                    <th>name</th>
                     <th>email</th>
                     <th>role</th>
                 </tr>
@@ -210,9 +266,10 @@
             <tbody>
                 <?php foreach ($users as $user) : ?>
                     <tr>
-                        <td><?= $user->nom ?></td>
-                        <td><?= $user->email ?></td>
-                        <td><?= $user->role ?></td>
+                        <td><?= $user["userId"] ?></td>
+                        <td><?= $user["username"] ?></td>
+                        <td><?= $user["email"] ?></td>
+                        <td><?= $user["roleId"]?></td>
 
                     </tr>
                 <?php endforeach; ?>
