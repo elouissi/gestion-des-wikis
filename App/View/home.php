@@ -1,4 +1,4 @@
- 
+  
     <title>Document</title>
 </head>
 <body>
@@ -22,7 +22,7 @@ include __DIR__.('./includes/navbar.php');
         <h2>Upcoming wikis</h2>
  
         </div> 
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">accpter</div></button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">ajouter</div></button>
 
    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">

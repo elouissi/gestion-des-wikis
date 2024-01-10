@@ -12,7 +12,7 @@ class WikisController {
         $wikis->acceptewikis($id);
 
         
-        include '../app/View/dashboard.php';
+        header("location: /gestion-des-wikis/dashboard");
     }
     public function deletewikis() {
         $id=$_GET['id'];
@@ -20,7 +20,7 @@ class WikisController {
         $wikis->deletewikis($id);
 
         
-        include '../app/View/dashboard.php';
+        header("location: /gestion-des-wikis/dashboard");
     }
     public function hashwikis() {
         $id=$_GET['id'];
@@ -28,6 +28,6 @@ class WikisController {
         $wikis->hashwikis($id);
 
         
-        include '../app/View/dashboard.php';
+        header("location: /gestion-des-wikis/dashboard");
     }
 }

@@ -3,29 +3,27 @@ namespace App\Controller;
 
 class Controller
 {
-    public function index(): void
+    
+    public function render(string $nameFolder, string $nameFile,array $params = null): void
     {
-        // Default implementation for the index method
-    }
+        $filePath = "../app/{$nameFolder}/{$nameFile}.php";
 
-    public function create(): void
-    {
-        // Default implementation for the create method
-    }
-
-    public function destroy(int $id): void
-    {
-        // Default implementation for the destroy method
-    }
-
-    public function update(int $id): void
-    {
-    }
-
-    public function render(string $nameFolder, string $nameFile, string $title, $result = null, $data = null, $teams = null): void
-    {
-        include "../resources/" . $nameFolder . "/" . $nameFile . ".php";
-    }
+        if (file_exists($filePath)) {
+            if (is_array($params)) {
+                // Crée des variables locales à la fonction pour chaque élément du tableau
+                extract($params);
+     
+                // Inclut le fichier avec les variables locales
+                include $filePath;
+            } else {
+                // Si aucun paramètre n'est passé, inclut simplement le fichier
+                include $filePath;
+            }
+        } else {
+            // Gestion de l'erreur si le fichier n'est pas trouvé
+            echo "Erreur : Fichier de vue non trouvé.";
+        }
+        }
 }
 
  

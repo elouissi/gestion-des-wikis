@@ -3,7 +3,7 @@ namespace App\Controller;
 use App\Controller\Controller;
 use App\Model\DashboardModel;
 
-class DashboardController     {
+class DashboardController extends Controller    {
     public function index() {
         $users = new DashboardModel;
         $users = $users->getallusers();
@@ -16,9 +16,11 @@ class DashboardController     {
 
         $categorys = new DashboardModel;
         $categorys = $categorys->getallcategorys();
+
+        $this->render("View","dashboard", compact('users','wikis', 'categorys','tags'));
         
        
-        include "../app/View/Dashboard.php";
+        // include "../app/View/Dashboard.php";
        
  
     }

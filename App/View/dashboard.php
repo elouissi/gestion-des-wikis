@@ -42,8 +42,7 @@
         </ul>
 
     </div>
-
-            
+             
     <main class="container">
         <div class="container__header">
             <h3>dashboard</h3>
@@ -75,7 +74,7 @@
                 <i class="fas fa-table"></i>
                 <div class="container__statistique__info">
                     <p>categories</p>
-                    <p class="container__statistique__detail"><?=count($categorys) ?></p>
+                    <p class="container__statistique__detail"><?=count($categorys ) ?></p>
                     
 
                 </div>
@@ -104,7 +103,7 @@
                 </tr>
             </thead>
             <tbody>
-           <?php foreach($wikis as $wiki) : ?>
+           <?php foreach($wikis  as $wiki) : ?>
            
                     <tr>
                         <td><?= $wiki['title'] ?></td>
@@ -113,9 +112,9 @@
                         <td><?=$wiki['description'] ?></td>
                         <td><?=$wiki['status'] ?></td>
                         <td>
-                            <a href="Wikis/acceptewikis/?id=<?= $wiki['wikiId']?>"><div class="btn btn-outline-success">accpter</div></a>
-                            <a href="Wikis/deletewikis/?id=<?= $wiki['wikiId']?>"><div class="btn btn-outline-danger">supprimer</div></a>
-                            <a href="Wikis/hashwikis/?id=<?= $wiki['wikiId']?>"><div class="btn btn-outline-warning">hash</div></a>
+                            <a href="Wikis/acceptewikis/?id=<?= $wiki['id']?>"><div class="btn btn-outline-success">accpter</div></a>
+                            <a href="Wikis/deletewikis/?id=<?= $wiki['id']?>"><div class="btn btn-outline-danger">supprimer</div></a>
+                            <a href="Wikis/hashwikis/?id=<?= $wiki['id']?>"><div class="btn btn-outline-warning">hash</div></a>
                         </td>
                     </tr>
            <?php endforeach ?>
@@ -177,11 +176,11 @@
                  
                     <tr>
                         
-                        <td><?= $tag["tagId"] ?></td>
+                        <td><?= $tag["id"] ?></td>
                         <td><?= $tag["name"] ?></td>
                         <td>
                             <div class="btn btn-outline-primary">modifier</div>
-                            <div class="btn btn-outline-danger">supprimer</div>
+                            <a href="Tags/deletetags/?id=<?= $tag['id']?>"><div class="btn btn-outline-danger">supprimer</div></a>
                         </td>
                     </tr>
             <?php endforeach; ?>
@@ -233,9 +232,9 @@
                 </tr>
             </thead>
             <tbody>
-            <?php foreach ($categorys as $category) : ?>
+            <?php foreach ($categorys  as $category) : ?>
                     <tr>
-                        <td><?= $category["categoryId"] ?></td>
+                        <td><?= $category["id"] ?></td>
                         <td><?= $category["name"] ?></td>
                   
                         <td>
@@ -264,7 +263,7 @@
             <tbody>
                 <?php foreach ($users as $user) : ?>
                     <tr>
-                        <td><?= $user["userId"] ?></td>
+                        <td><?= $user["id"] ?></td>
                         <td><?= $user["username"] ?></td>
                         <td><?= $user["email"] ?></td>
                         <td><?= $user["roleId"]?></td>

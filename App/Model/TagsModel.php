@@ -18,6 +18,9 @@ class TagsModel  extends Crud  {
     
         return $this->create("Tags", $data_insert);
     }
+    public function delete_tags($id){
+        return $this->delete("Tags",$id);
+    }
     
  
 }

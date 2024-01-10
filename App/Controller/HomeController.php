@@ -3,12 +3,13 @@ namespace App\Controller;
 use App\Controller\Controller; 
 use App\Model\WikisModel;
 
-class HomeController {
+class HomeController extends Controller{
     public function index() {
         $wikis = new WikisModel;
         $allWikis = $wikis->getallwikis();
         
-        include '../app/View/home.php';
+        header("location: /gestion-des-wikis/dashboard");
+
     }
 }
 

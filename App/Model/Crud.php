@@ -56,7 +56,7 @@ class Crud
             }
             $update_arr = implode(", ", $update_arr);
     
-            $query = "UPDATE $tableName SET $update_arr WHERE wikiId = :id";
+            $query = "UPDATE $tableName SET $update_arr WHERE id = :id";
             $data['id'] = $id;
     
             $stmt = $this->conn->getConnection()->prepare($query);
@@ -72,7 +72,7 @@ class Crud
     public function delete($tableName, $id)
     {
         try {
-            $query = "DELETE FROM $tableName WHERE wikiId = :id";
+            $query = "DELETE FROM $tableName WHERE id = :id";
 
             // Prepare and execute the SQL statement
             $stmt = $this->conn->getConnection()->prepare($query);
