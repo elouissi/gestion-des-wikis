@@ -8,7 +8,7 @@ class HomeController extends Controller{
         $wikis = new WikisModel;
         $allWikis = $wikis->getallwikis();
         
-        header("location: /gestion-des-wikis/dashboard");
+        $this->render("View","home", compact('allWikis'));
 
     }
 }
