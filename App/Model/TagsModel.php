@@ -24,6 +24,12 @@ class TagsModel  extends Crud  {
     public function read_tags($id){
         return $this->seletTags($id);
     }
+    public function Edit_tags($name,$id){
+        $updateData = [
+            'name' => $name
+        ];
+        return $this->update("Tags",$updateData,$id);
+    }
     
  
 }

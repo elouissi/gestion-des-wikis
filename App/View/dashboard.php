@@ -174,7 +174,7 @@
                         <td><?= $tag["id"] ?></td>
                         <td><?= $tag["name"] ?></td>
                         <td>
-                             <a href="Tags/editTags/?id=<?= $tag['id']?>"><div class="btn btn-outline-primary ">modifier</div></a>
+                             <a href="Tags/readOneTags/?id=<?= $tag['id']?>"><div class="btn btn-outline-primary ">modifier</div></a>
                             <a href="Tags/deletetags/?id=<?= $tag['id']?>"><div class="btn btn-outline-danger">supprimer</div></a>
 
                         </td>

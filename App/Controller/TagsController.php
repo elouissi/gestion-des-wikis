@@ -26,7 +26,8 @@ class TagsController extends Controller {
         header("location: /gestion-des-wikis/dashboard");
     }
    
-    public function editTags() {
+    public function readOneTags() {
+  
         
         $id=$_GET['id'];
 
@@ -36,6 +37,20 @@ class TagsController extends Controller {
 
         
          $this->render("View","EditTags", compact('singleTags'));
+        }
+   
+    public function EditTags() {
+        
+        $name=$_POST['name'];
+        $id = $_POST['id'];
+        
+
+        $TagEdit = new TagsModel;
+         $TagEdit->Edit_tags($name,$id);
+ 
+
+        
+        header("location: /gestion-des-wikis/dashboard");
         }
    
 }
