@@ -26,5 +26,17 @@ class TagsController extends Controller {
         header("location: /gestion-des-wikis/dashboard");
     }
    
+    public function editTags() {
+        
+        $id=$_GET['id'];
+
+        $Tags = new TagsModel;
+        $singleTags = $Tags->read_tags($id);
+ 
+
+        
+         $this->render("View","EditTags", compact('singleTags'));
+        }
+   
 }
     

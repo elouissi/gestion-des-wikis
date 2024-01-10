@@ -93,6 +93,13 @@ class Crud
         $stmt->execute(); 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function seletTags($id)
+    {
+        $sql = "SELECT * FROM Tags WHERE id = $id";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
    
     
 }

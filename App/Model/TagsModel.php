@@ -21,6 +21,9 @@ class TagsModel  extends Crud  {
     public function delete_tags($id){
         return $this->delete("Tags",$id);
     }
+    public function read_tags($id){
+        return $this->seletTags($id);
+    }
     
  
 }
