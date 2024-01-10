@@ -21,6 +21,9 @@ class CategorysModel  extends Crud  {
     public function read_categorys($id){
         return $this->seletCategorys($id);
     }
+    public function delete_Categorys($id){
+        return $this->delete("categorys",$id);
+    }
     public function Edit_categorys($name,$id){
         $update = [
             'name' => $name

@@ -232,8 +232,8 @@
                         <td>
                         
                         <a href="Categorys/readOneCtegory/?id=<?= $category['id']?>"><div class="btn btn-outline-primary ">modifier</div></a>
-                            <div class="btn btn-outline-danger">supprimer</div>
-                        </td>
+                        <a href="Categorys/deletCategory/?id=<?= $category['id']?>"><div class="btn btn-outline-danger">supprimer</div></a>                     
+                       </td>
                     </tr>
                     <?php endforeach; ?>
            

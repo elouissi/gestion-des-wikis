@@ -43,4 +43,15 @@ class CategorysController  extends Controller
         $TagEdit->Edit_categorys($name, $id);
         header("location: /gestion-des-wikis/dashboard");
     }
-}
+    public function deletCategory(){
+          
+        $id=$_GET['id'];
+
+        $Categorys = new CategorysModel;
+         $Categorys->delete_Categorys($id);
+        
+        header("location: /gestion-des-wikis/dashboard");
+    }
+
+    }
+
