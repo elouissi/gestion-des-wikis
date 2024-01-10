@@ -47,27 +47,27 @@ class Crud
             return []; // Return an empty array in case of an error
         }
     }
-    public function update($tableName, $data, $id)
-    {
-        try {
-            $update_arr = [];
-            foreach ($data as $column => $value) {
-                $update_arr[] = "$column = :$column";
+        public function update($tableName, $data, $id)
+        {
+            try {
+                $update_arr = [];
+                foreach ($data as $column => $value) {
+                    $update_arr[] = "$column = :$column";
+                }
+                $update_arr = implode(", ", $update_arr);
+        
+                $query = "UPDATE $tableName SET $update_arr WHERE id = :id";
+                $data['id'] = $id;
+        
+                $stmt = $this->conn->getConnection()->prepare($query);
+                $stmt->execute($data);
+                    
+                echo "Record updated successfully!";
+            } catch (PDOException $e) {
+                echo "Error updating record: " . $e->getMessage();
             }
-            $update_arr = implode(", ", $update_arr);
-    
-            $query = "UPDATE $tableName SET $update_arr WHERE id = :id";
-            $data['id'] = $id;
-    
-            $stmt = $this->conn->getConnection()->prepare($query);
-            $stmt->execute($data);
-                  
-             echo "Record updated successfully!";
-        } catch (PDOException $e) {
-            echo "Error updating record: " . $e->getMessage();
         }
-    }
-    
+        
 
     public function delete($tableName, $id)
     {
@@ -96,6 +96,14 @@ class Crud
     public function seletTags($id)
     {
         $sql = "SELECT * FROM Tags WHERE id = $id";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+   
+    public function seletCategorys($id)
+    {
+        $sql = "SELECT * FROM categorys WHERE id = $id";
         $stmt = $this->conn->getConnection()->prepare($sql);
         $stmt->execute(); 
         return $stmt->fetch(PDO::FETCH_ASSOC);

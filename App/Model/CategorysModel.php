@@ -18,6 +18,15 @@ class CategorysModel  extends Crud  {
     
         return $this->create("categorys", $data_insert);
     }
-    
+    public function read_categorys($id){
+        return $this->seletCategorys($id);
+    }
+    public function Edit_categorys($name,$id){
+        $update = [
+            'name' => $name
+        ];
+        
+        return $this->update("categorys ",$update,$id);
+    }
  
 }

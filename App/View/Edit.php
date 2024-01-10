@@ -16,20 +16,18 @@
 	<link rel="stylesheet" type="text/css" href="<?= URL_DIR ?>public/assets/css/main.css">
 <!--===============================================================================================-->
 </head>
- 
-<?php 
-include __DIR__.('./includes/navbar.php');
-?>
+
 	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 			 
-
+			<?php if(isset($singleTags)){?>
 				<form class="login100-form validate-form" style="margin: auto;" action="../EditTags" method="POST">
 					<span class="login100-form-title">
 					 Edit
 					</span>
+					
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="name" placeholder="Email"value="<?= $singleTags['name']?>">
@@ -45,8 +43,6 @@ include __DIR__.('./includes/navbar.php');
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
- 
-					
 					<div class="container-login100-form-btn">
 						<button type="submit" class="login100-form-btn">
 							Edit
@@ -62,6 +58,45 @@ include __DIR__.('./includes/navbar.php');
 						</a>
 					</div>
 				</form>
+					<?php }else{ ?>
+						<form class="login100-form validate-form" style="margin: auto;" action="../EditCategory" method="POST">
+					<span class="login100-form-title">
+					 Edit
+					</span>
+
+						<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="name" placeholder="Email"value="<?= $singleCategory['name']?>">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" hidden>
+						<input class="input100" type="text" name="id" placeholder="Email"value="<?= $singleCategory['id']?>">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Edit
+						</button>
+					</div>
+
+				 
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="#">
+							exit
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+					<?php } ?>
+ 
+					
+					
 			</div>
 		</div>
 	</div>

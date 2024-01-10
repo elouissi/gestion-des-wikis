@@ -36,7 +36,7 @@ class TagsController extends Controller {
  
 
         
-         $this->render("View","EditTags", compact('singleTags'));
+         $this->render("View","Edit", compact('singleTags'));
         }
    
     public function EditTags() {

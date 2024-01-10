@@ -230,7 +230,8 @@
                         <td><?= $category["name"] ?></td>
                   
                         <td>
-                            <div class="btn btn-outline-primary">modifier</div>
+                        
+                        <a href="Categorys/readOneCtegory/?id=<?= $category['id']?>"><div class="btn btn-outline-primary ">modifier</div></a>
                             <div class="btn btn-outline-danger">supprimer</div>
                         </td>
                     </tr>
