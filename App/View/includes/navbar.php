@@ -41,22 +41,20 @@
                 </a>
             </div>
             <div class="side_nav__actions">
-                <!-- <button class="nav__actions__login">Log In</button>
-                <button class="nav__actions__signup">Sign Up</button> -->
-                <a href="#"> <button class="nav__actions1__login">Log In</button></a>
-                <a href="#"><button class="nav__actions1__signup">Sign Up</button></a>
+            <?php if(isset($_SESSION['id_user'])){ ?>
+                    <a href="/StreamStadium/Auth/profile" class="btn btn-primary"><?= $_SESSION['userma']?></a>
+                    <a href="/StreamStadium/Auth/log_out" class="nav__actions__login">Log out</a>
+                <?php } else{ ?>
+                    <a href="#"> <button class="nav__actions1__login">Log In</button></a>
+                <a href="Auth/Register"><button class="nav__actions1__signup">Sign Up</button></a>
+                <?php } ?>
+            
             </div>
             
     
-            <!-- <div class="nav__actions">
-                <?php if(isset($_SESSION['id_user'])){ ?>
-                    <a href="/StreamStadium/Auth/profile" class="btn btn-primary"><?= $_SESSION['name']?></a>
-                    <a href="/StreamStadium/Auth/log_out" class="nav__actions__login">Log out</a>
-                <?php } else{ ?>
-                   <a href="/StreamStadium/Auth/sign_in" class="nav__actions__login">Log In</a>
-                   <a href="/StreamStadium/Auth/register" class="nav__actions__signup">Sign Up</a>
-                <?php } ?>
-            </div> -->
+            <div class="nav__actions">
+             
+            </div>
     
         </nav>
         <nav class="side__nav side__nav--active">
@@ -89,4 +87,4 @@
         </nav>
     </header>
 
-    <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
+ 

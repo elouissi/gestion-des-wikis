@@ -108,6 +108,17 @@ class Crud
         $stmt->execute(); 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function select_auth(string $email,string $cin=null)
+    {
+        $sql = "select * from users where email = ?";
+        if($cin!=null) $sql.=" and cin = ?";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        if($cin!=null) $stmt->execute([$email,$cin]);
+        else $stmt->execute([$email]);
+
+        return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_OBJ) : null;
+
+    }
    
     
 }

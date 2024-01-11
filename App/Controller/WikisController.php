@@ -4,7 +4,7 @@ use App\Controller\Controller;
 use App\Model\WikisModel;
 use App\Model\DashboardModel;   
 
-class WikisController {
+class WikisController extends Controller {
     public function acceptewikis() {
         
         $id=$_GET['id'];
@@ -30,4 +30,16 @@ class WikisController {
         
         header("location: /gestion-des-wikis/dashboard");
     }
+    public function Addwikis() {
+        
+        $tags = new DashboardModel;
+        $tags = $tags->getalltags();
+
+        $categorys = new DashboardModel;
+        $categorys = $categorys->getallcategorys();
+
+        
+        $this->render("View","AddWikis", compact('categorys','tags'));
+    }
+
 }
