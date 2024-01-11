@@ -7,6 +7,7 @@ class HomeController extends Controller{
     public function index() {
         $wikis = new WikisModel;
         $allWikis = $wikis->getallwikis();
+        session_start();
         
         $this->render("View","home", compact('allWikis'));
 

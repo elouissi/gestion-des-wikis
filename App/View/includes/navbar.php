@@ -41,12 +41,12 @@
                 </a>
             </div>
             <div class="side_nav__actions">
-            <?php if(isset($_SESSION['id_user'])){ ?>
-                    <a href="/StreamStadium/Auth/profile" class="btn btn-primary"><?= $_SESSION['userma']?></a>
-                    <a href="/StreamStadium/Auth/log_out" class="nav__actions__login">Log out</a>
+            <?php if(isset($_SESSION['name'])){ ?>
+                    <a href="#" class="btn btn-primary"><?= $_SESSION['name']?></a>
+                    <a href="<?= URL_DIR ?>Auth/log_out" class="nav__actions__login">Log out</a>
                 <?php } else{ ?>
                     <a href="#"> <button class="nav__actions1__login">Log In</button></a>
-                <a href="Auth/Register"><button class="nav__actions1__signup">Sign Up</button></a>
+                <a href="<?= URL_DIR ?>Auth/Register"><button class="nav__actions1__signup">Sign Up</button></a>
                 <?php } ?>
             
             </div>

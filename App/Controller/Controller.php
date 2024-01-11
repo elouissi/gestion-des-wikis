@@ -25,7 +25,7 @@ class Controller
         }
         }
     
-            public function validation_input(string $data): string {
+            public function validation_input(  $data): string {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);

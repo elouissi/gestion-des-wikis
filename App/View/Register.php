@@ -34,7 +34,7 @@ include __DIR__.('./includes/navbar.php');
 					<img src="<?= URL_DIR ?>public/assets/images/logo.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="" method="Auth/create" method="POST" >
+				<form class="login100-form validate-form" action="create" method="POST" >
 					<span class="login100-form-title">
 						Register
 					</span>
@@ -62,7 +62,7 @@ include __DIR__.('./includes/navbar.php');
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password_val" placeholder="password validation">
+						<input class="input100" type="password" name="confirmation_password" placeholder="password validation">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>

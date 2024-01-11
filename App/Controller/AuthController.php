@@ -23,22 +23,22 @@ class AuthController extends Controller
      */
     function create(): void
     {
-        exit(var_dump("hhh"));
+      
 
-        session_start();
-        // TODO: Implement create() method.
+         // TODO: Implement create() method.
         $name = $this->validation_input($_POST["name"]);
          $email = $this->validation_input($_POST["email"]);
          $password = $this->validation_input($_POST["password"]);
         $confirmation_password = $this->validation_input($_POST["confirmation_password"]);
+      
         if(!(empty($name)&& empty($email) && empty($password) && empty($confirmation_password) )){
             if($password==$confirmation_password){
                 $user=new UsersModel();
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
          
                     $user->add_User($name,$email,$password_hash);
-                  $id_user =  $_SESSION['id_user'];
-                   $name_user = $_SESSION["name"];
+                     $_SESSION["name"] = $name ;
+                    exit(var_dump($_SESSION["name"]));
 
                     
 
@@ -84,37 +84,37 @@ class AuthController extends Controller
         // TODO: Implement login() method.
         $this->render("View","Register");
     }
-    // public function login():void{
-    //     session_start();
-    //     $email = $this->validation_input($_POST["email"]);
-    //     $password = $this->validation_input($_POST["password"]);
-    //     if(!(empty($password) || empty($email))){
-    //         $user=new User();
-    //         $user->setEmail($email);
-    //         $us=$user->check_auth_login();
-    //         if($us!=null){
-    //             if(password_verify($password, $us->password)){
-    //                 $_SESSION["id_user"]=$us->id;
-    //                 $_SESSION["name"]=$us->full_name;
-    //                 header("Location: /streamstadium/Auth/profile");
-    //                 die;
-    //             }
-    //             else{
-    //                 header("Location: /streamstadium/Auth/sign_in/password_incorrect");
-    //                 die;
-    //             }
-    //         }
-    //         else{
-    //             header("Location: /streamstadium/Auth/sign_in/email_not_found");
-    //             die;
-    //         }
+    public function login():void{
+        session_start();
+        $email = $this->validation_input($_POST["email"]);
+        $password = $this->validation_input($_POST["password"]);
+        if(!(empty($password) || empty($email))){
+            $user=new UsersModel();
+            $user->setEmail($email);
+            $us=$user->check_auth_login();
+            if($us!=null){
+                if(password_verify($password, $us->password)){
+                    $_SESSION["id_user"]=$us->id;
+                    $_SESSION["name"]=$us->full_name;
+                    header("Location: /streamstadium/Auth/profile");
+                    die;
+                }
+                else{
+                    header("Location: /streamstadium/Auth/sign_in/password_incorrect");
+                    die;
+                }
+            }
+            else{
+                header("Location: /streamstadium/Auth/sign_in/email_not_found");
+                die;
+            }
 
-    //     }
-    //     else{
-    //         header("Location: /streamstadium/Auth/sign_in/enter_all_data");
-    //         die;
-    //     }
-    // }
+        }
+        else{
+            header("Location: /streamstadium/Auth/sign_in/enter_all_data");
+            die;
+        }
+    }
     // function registe(): void
     // {
     //     session_start();
@@ -170,12 +170,10 @@ class AuthController extends Controller
     //     header("Location: /streamstadium/Auth/profile");
 
     // }
-    public function log_out():void {
-
+    public function log_out(){
             session_start();
-            unset($_SESSION["id_user"]);
-            unset($_SESSION["name"]);
-            header("Location: /streamstadium/Auth/sign_in");
-
+             session_destroy();
+           
+            header("location: /gestion-des-wikis/home"); 
     }
 }
