@@ -23,7 +23,10 @@ class AuthController extends Controller
      */
     function create(): void
     {
-      
+     
+        session_start();
+         
+        $this->Register();
 
          // TODO: Implement create() method.
         $name = $this->validation_input($_POST["name"]);
@@ -31,22 +34,24 @@ class AuthController extends Controller
          $password = $this->validation_input($_POST["password"]);
         $confirmation_password = $this->validation_input($_POST["confirmation_password"]);
       
-        if(!(empty($name)&& empty($email) && empty($password) && empty($confirmation_password) )){
+        if(!(empty($name)|| empty($email) || empty($password) || empty($confirmation_password) )){
             if($password==$confirmation_password){
                 $user=new UsersModel();
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
          
                     $user->add_User($name,$email,$password_hash);
                      $_SESSION["name"] = $name ;
-                    exit(var_dump($_SESSION["name"]));
-
+ 
                     
 
                     header("location: /gestion-des-wikis/home");             
             }
-            else $this->render("views","Register");
+            else
+            
+            echo "<script> alert('password incorrect') </script>";
         }
-        else $this->render("views","Register");
+        else   
+        echo "<script> alert('entere les infos') </script>";
 
 
     }
@@ -80,41 +85,56 @@ class AuthController extends Controller
 
     function Register()
     {
-        session_start();
-        // TODO: Implement login() method.
+         // TODO: Implement login() method.
         $this->render("View","Register");
     }
-    public function login():void{
+    function sign_in()
+    {
         session_start();
+        // TODO: Implement login() method.
+        $this->render("View","Log_in");
+    }
+    public function login(){
+       
+        session_start();
+        $this->sign_in();
         $email = $this->validation_input($_POST["email"]);
         $password = $this->validation_input($_POST["password"]);
         if(!(empty($password) || empty($email))){
             $user=new UsersModel();
-            $user->setEmail($email);
-            $us=$user->check_auth_login();
-            if($us!=null){
-                if(password_verify($password, $us->password)){
-                    $_SESSION["id_user"]=$us->id;
-                    $_SESSION["name"]=$us->full_name;
-                    header("Location: /streamstadium/Auth/profile");
-                    die;
+           $row = $user->getUserByEmail($email);
+             if ($row !== null){
+                if(password_verify($password,$row['password'])){
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name']=$row['username'] ;
+                    $_SESSION['id'] = $row['id'];
+                     $_SESSION['role'] = $row['role'];
+                    header("location: /gestion-des-wikis/home");                    
+                       die;
                 }
                 else{
-                    header("Location: /streamstadium/Auth/sign_in/password_incorrect");
+                    echo "<script> alert('password incorrect') </script>";
                     die;
                 }
             }
             else{
-                header("Location: /streamstadium/Auth/sign_in/email_not_found");
+                echo "<script> alert('email not found') </script>";
                 die;
             }
 
         }
         else{
-            header("Location: /streamstadium/Auth/sign_in/enter_all_data");
+            echo "<script> alert('entere les infos') </script>";
             die;
         }
+    
+     
+ 
     }
+ 
+
+
+    
     // function registe(): void
     // {
     //     session_start();

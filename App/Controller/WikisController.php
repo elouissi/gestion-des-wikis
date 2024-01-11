@@ -37,9 +37,13 @@ class WikisController extends Controller {
 
         $categorys = new DashboardModel;
         $categorys = $categorys->getallcategorys();
-
-        
+        session_start();
+        if(isset($_SESSION['name'])){
         $this->render("View","AddWikis", compact('categorys','tags'));
+        }else{
+                   
+        header("location: /gestion-des-wikis/Auth/Register");
+        }
     }
 
 }

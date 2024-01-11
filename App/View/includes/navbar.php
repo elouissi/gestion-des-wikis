@@ -45,7 +45,7 @@
                     <a href="#" class="btn btn-primary"><?= $_SESSION['name']?></a>
                     <a href="<?= URL_DIR ?>Auth/log_out" class="nav__actions__login">Log out</a>
                 <?php } else{ ?>
-                    <a href="#"> <button class="nav__actions1__login">Log In</button></a>
+                    <a href="<?= URL_DIR ?>Auth/sign_in"> <button class="nav__actions1__login">Log In</button></a>
                 <a href="<?= URL_DIR ?>Auth/Register"><button class="nav__actions1__signup">Sign Up</button></a>
                 <?php } ?>
             
