@@ -33,6 +33,7 @@ class WikisModel extends Crud  {
     }
     public function deletewikis($id)
     {
+   
         
         return $this->delete("wikis" ,$id);
     }
@@ -64,6 +65,13 @@ class WikisModel extends Crud  {
     
         return $this->create("wikitags", $data_tag);
 
+    }
+    public function afficher_one ($id) {
+        return $this->selectOne($id);
+
+    }
+    public function afficher_tags($id){
+        return $this->selectTags($id);
     }
     
 }

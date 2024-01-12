@@ -20,11 +20,9 @@ class DashboardController extends Controller    {
         $this->render("View","dashboard", compact('users','wikis', 'categorys','tags'));
         
        
-        // include "../app/View/Dashboard.php";
-       
  
     }
-    
+   
     
      
 

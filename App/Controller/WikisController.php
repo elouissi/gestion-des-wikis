@@ -16,6 +16,7 @@ class WikisController extends Controller {
         header("location: /gestion-des-wikis/dashboard");
     }
     public function deletewikis() {
+
         $id=$_GET['id'];
         $wikis = new WikisModel;
         $wikis->deletewikis($id);
@@ -67,5 +68,18 @@ class WikisController extends Controller {
 
 
     }
+    public function affichage_wiki(){
+        session_start();
+        $id = $_GET['id'];
+        $wikis = new WikisModel;
+        $one_wiki =$wikis->afficher_one($id);
+        $tags =$wikis->afficher_tags($id);
+        // exit(var_dump($one_wiki));
+        $this->render("View","Single_Page_Wiki", compact('one_wiki','tags'));
+
+        
+    }
+    
+    
 
 }

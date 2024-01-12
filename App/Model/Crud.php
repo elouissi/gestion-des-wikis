@@ -109,17 +109,29 @@ class Crud
         $stmt->execute(); 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    // public function select_auth(string $email,string $cin=null)
-    // {
-    //     $sql = "select * from users where email = ?";
-    //     if($cin!=null) $sql.=" and cin = ?";
-    //     $stmt = $this->conn->getConnection()->prepare($sql);
-    //     if($cin!=null) $stmt->execute([$email,$cin]);
-    //     else $stmt->execute([$email]);
-
-    //     return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_OBJ) : null;
-
-    // }
+    public function selectOne($id)
+    {
+        $sql = "SELECT wikis.*, 
+                users.username AS user_name,
+                categorys.name AS category_name
+        FROM wikis  
+        JOIN users ON wikis.userId = users.id  
+        JOIN categorys ON wikis.categoryId = categorys.id  
+        WHERE wikis.id =  $id";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+    public function selectTags($id)
+    {
+        $sql = "SELECT t.name FROM wikitags
+        INNER JOIN tags t
+        ON wikitags.tagId=t.id
+        WHERE wikitags.wikiId = $id LIMIT 100";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
    
     
 }
