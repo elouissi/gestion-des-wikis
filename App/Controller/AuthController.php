@@ -90,15 +90,13 @@ class AuthController extends Controller
     }
     function sign_in()
     {
-        session_start();
-        // TODO: Implement login() method.
+         // TODO: Implement login() method.
         $this->render("View","Log_in");
     }
     public function login(){
        
         session_start();
-        $this->sign_in();
-        $email = $this->validation_input($_POST["email"]);
+         $email = $this->validation_input($_POST["email"]);
         $password = $this->validation_input($_POST["password"]);
         if(!(empty($password) || empty($email))){
             $user=new UsersModel();
@@ -108,7 +106,9 @@ class AuthController extends Controller
                     $_SESSION['email'] = $email;
                     $_SESSION['name']=$row['username'] ;
                     $_SESSION['id'] = $row['id'];
-                     $_SESSION['role'] = $row['role'];
+                     $_SESSION['role'] = $row['roleId'];
+                   
+
                     header("location: /gestion-des-wikis/home");                    
                        die;
                 }

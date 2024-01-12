@@ -43,7 +43,7 @@ class UsersModel extends Crud  {
       
           // Utilisez fetch pour obtenir une seule ligne
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
-           return $row;
+            return $row;
         
       }
       

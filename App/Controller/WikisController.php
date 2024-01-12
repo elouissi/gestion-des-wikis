@@ -45,5 +45,22 @@ class WikisController extends Controller {
         header("location: /gestion-des-wikis/Auth/Register");
         }
     }
+    public function ajouter_wiki(){
+        session_start();
+        $title = $_POST['title'];
+        $tags = $_POST['tags'];
+         $content = $_POST['content'];
+        $description = $_POST['description'];
+        $category = $_POST['category'];
+        $id_user = $_SESSION['id'];
+  
+        $wikis = new WikisModel;
+        $wiki = $wikis->ajouter_wiki($title ,$content, $description , $category,$id_user);
+        
+        
+        header("location: /gestion-des-wikis/dashboard");
+
+
+    }
 
 }

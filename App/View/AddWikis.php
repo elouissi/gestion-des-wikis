@@ -19,18 +19,18 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= URL_DIR ?>public/assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= URL_DIR ?>public/assets/css/main.css">
+     <link href="<?= URL_DIR ?>public/assets/css/bootstrap_home.css" rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 
 <body>
-<?php 
-include __DIR__.('./includes/navbar.php');
-?>
+ 
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				 
-            <form class="login100-form validate-form" style="margin: auto;">
+            <form class="login100-form validate-form" style="margin: auto;" action="ajouter_wiki" method="POST">
     <span class="login100-form-title">
         Add Wiki
     </span>
@@ -64,28 +64,37 @@ include __DIR__.('./includes/navbar.php');
 
     <!-- Sélecteur -->
     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-        <select class="input100" name="your_option">
+        <select class="input100" name="category">
         <option value="1"  selected disabled>choisir une categorie</option>
             <?php foreach($categorys as $cat){?>
-            <option value="<?= $cat['name']?>"><?= $cat['name']?></option>
+            <option  value="<?= $cat['id']?>"><?= $cat['name']?></option>
             <?php } ?>
         </select>
-        <span class="focus-input100"></span>
-        <span class="symbol-input100">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-        </span>
+    
     </div>
-    <?php foreach($tags as $tag){?>
-    <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-  <?= $tag['name']?>
-  </label>
-</div>
-<?php } ?>
+<h6>Selectionner Tags</h6>
+<div class="row">
+    <?php $count = 0; ?>
+    <?php foreach ($tags as $tag) : ?>
+        <div class="col-md-6">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="<?= $tag['id'] ?>" name="tags[]"id="flexCheckDefault<?= $count ?>">
+                <label class="form-check-label" for="flexCheckDefault<?= $count ?>">
+                    <?= $tag['name'] ?>
+                </label>
+            </div>
+        </div>
+        <?php if (++$count % 2 == 0) : ?>
+            </div>
+            <?php if ($count < count($tags)) : ?>
+                <div class="row">
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
  
 
-    <!-- Bouton d'ajout -->
+ 
+ 
     <div class="container-login100-form-btn">
         <button class="login100-form-btn">
             Add
@@ -106,7 +115,7 @@ include __DIR__.('./includes/navbar.php');
 	<script src="js/main.js"></script>
 
 </body>
-	<?php include __DIR__.('./includes/footer.php');?>
+	<?php include __DIR__.('../includes/footer.php');?>
  
 	<script >
 		$('.js-tilt').tilt({

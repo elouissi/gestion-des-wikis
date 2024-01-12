@@ -36,5 +36,20 @@ class WikisModel extends Crud  {
         
         return $this->delete("wikis" ,$id);
     }
+    public function ajouter_wiki( $title ,$content, $description , $category ,$id_user){
+        $data_wiki=[
+           'title'=> $title ,
+           'content' => $content ,
+           'description' => $description ,
+            'categoryId' => $category ,
+            'userId' => $id_user,
+     
+        ];
+
+        return $this->create("wikis", $data_wiki);
+    }
+    public function ajouter_tag(){
+        
+    }
     
 }
