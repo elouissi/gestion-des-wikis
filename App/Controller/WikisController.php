@@ -3,6 +3,7 @@ namespace App\Controller;
 use App\Controller\Controller; 
 use App\Model\WikisModel;
 use App\Model\DashboardModel;   
+ 
 
 class WikisController extends Controller {
     public function acceptewikis() {
@@ -55,8 +56,12 @@ class WikisController extends Controller {
         $id_user = $_SESSION['id'];
   
         $wikis = new WikisModel;
-        $wiki = $wikis->ajouter_wiki($title ,$content, $description , $category,$id_user);
-        
+        $wiki = $wikis->ajouter_wiki($title ,$content, $description , $category,$id_user); 
+         $id = $wikis->return_last_id();
+        // var_dump($tags);die;
+        foreach($tags as $tag){
+        $taginsert = $wikis->ajouter_tag($id,$tag);
+        }
         
         header("location: /gestion-des-wikis/dashboard");
 

@@ -50,7 +50,7 @@ include __DIR__.('./includes/navbar.php');
               <h5 class="card-title"><?= $wiki['title'] ?></h5>
               <p class="card-text"><?= $wiki['content'] ?></p>
               <p>date creation: <?= $wiki['dateCreate'] ?></p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="Single_Page_Wiki " class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>

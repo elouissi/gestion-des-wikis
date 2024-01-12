@@ -7,6 +7,7 @@
     <link href="bootstrap_home.css" rel="stylesheet">
     <link href="home.css" rel="stylesheet">
     <link href="<?= URL_DIR ?>public/assets/css/home.css" rel="stylesheet">
+    <link href="<?= URL_DIR ?>public/assets/css/single_Page.css" rel="stylesheet">
     <link href="<?= URL_DIR ?>public/assets/css/bootstrap_home.css" rel="stylesheet">
     <link href="<?= URL_DIR ?>public/assets/css/style_header.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">

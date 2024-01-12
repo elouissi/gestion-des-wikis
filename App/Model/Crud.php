@@ -30,6 +30,7 @@ class Crud
             echo "Error creating record: " . $e->getMessage();
         }
     }
+   
 
   
     public function read($tableName)

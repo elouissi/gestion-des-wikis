@@ -46,10 +46,23 @@ class WikisModel extends Crud  {
             'userId' => $id_user,
      
         ];
+        
 
         return $this->create("wikis", $data_wiki);
     }
-    public function ajouter_tag(){
+    public function return_last_id(){
+        return  $this->conn->getConnection()->lastInsertId();
+    
+    }
+    public function ajouter_tag($id,$tag){
+        
+        $data_tag =[
+            'wikiId' => $id,
+            'tagId' => $tag
+        ];
+        // exit(var_dump($tags));
+    
+        return $this->create("wikitags", $data_tag);
 
     }
     
