@@ -38,6 +38,7 @@ class WikisModel extends Crud  {
     }
     public function ajouter_wiki( $title ,$content, $description , $category ,$id_user){
         $data_wiki=[
+            
            'title'=> $title ,
            'content' => $content ,
            'description' => $description ,
@@ -49,7 +50,7 @@ class WikisModel extends Crud  {
         return $this->create("wikis", $data_wiki);
     }
     public function ajouter_tag(){
-        
+
     }
     
 }
