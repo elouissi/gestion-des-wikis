@@ -2,6 +2,7 @@
 namespace App\Controller;
 use App\Controller\Controller;
 use App\Model\DashboardModel;
+use App\Model\WikisModel;
 
 class DashboardController extends Controller    {
     public function index() {
@@ -17,11 +18,21 @@ class DashboardController extends Controller    {
         $categorys = new DashboardModel;
         $categorys = $categorys->getallcategorys();
 
-        $this->render("View","dashboard", compact('users','wikis', 'categorys','tags'));
+
+        session_start();
+        $id = $_SESSION['id'];
+        
+        $singlewiki = new WikisModel;
+        $singlewiki = $singlewiki->singlewiki($id);
+      
+
+        $this->render("View","dashboard", compact('users','wikis', 'categorys','tags','singlewiki'));
+ 
+        
         
        
  
-    }
+    
    
     
      
@@ -30,3 +41,4 @@ class DashboardController extends Controller    {
     }
 
  
+}

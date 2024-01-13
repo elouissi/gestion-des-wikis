@@ -21,10 +21,10 @@
                 <div class="menu__profile">
                     <img src="<?= URL_DIR ?>public/assets/images/nadi.JPG" alt="">
                 </div>
-                <h4 class="menu__profile__name">Yassine elouissi</h4>
+                <h4 class="menu__profile__name"><?php $_SESSION['name'] ?></h4>
             </li>
             <li class="menu__list__item">
-                <a href="">
+                <a href="Home/index">
                     <i class="fas fa-home"></i>
                     <p>home</p>
                 </a>
@@ -42,8 +42,11 @@
         </ul>
 
     </div>
+    
+    
              
     <main class="container">
+    <?php if($_SESSION['role'] == 1 ): ?>
         <div class="container__header">
             <h3>dashboard</h3>
             <i class="fas fa-chart-pie"></i>
@@ -79,16 +82,20 @@
 
                 </div>
             </div>
+            <?php endif; ?>
+
  
 
 <!-- Modal -->
 
 
         </div>
+        <?php if($_SESSION['role'] == 1 ): ?>
         <div class="container__header">
             <h3>Wikis Statistiques</h3>
             <i class="fas fa-pen"></i>
         </div>
+     
     
 
         <table class="container__table">
@@ -121,6 +128,46 @@
             </tbody>
             
         </table>
+        <?php endif; ?>
+        <?php   
+        if(   $_SESSION['role'] == 2){?>
+        <div class="container__header">
+            <h3>Wikis Statistiques</h3>
+            <i class="fas fa-pen"></i>
+        </div>
+    
+
+        <table class="container__table">
+            <thead>
+                <tr>
+                    <th>titre</th>
+                    <th>content </th>
+                    <th>date creation </th>
+                    <th>description </th>
+                    <th>status </th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+           <?php foreach($singlewiki  as $single) : ?>
+           
+                    <tr>
+                        <td><?= $single['title'] ?></td>
+                        <td><?=$single['content'] ?></td>
+                        <td><?=$single['dateCreate'] ?></td>
+                        <td><?=$single['description'] ?></td>
+                        <td><?=$single['status'] ?></td>
+                        <td>
+                             <a href="wikis/deletewikis/?id=<?= $single['id']?>"><div class="btn btn-outline-danger">supprimer</div></a>
+                             <a href="wikis/modifierwikis/?id=<?= $single['id']?>"><div class="btn btn-outline-primary">modifier</div></a>
+                         </td>
+                    </tr>
+           <?php endforeach ?>
+            </tbody>
+            
+        </table>
+        <?php } ?>
+        <?php if($_SESSION['role'] == 1 ): ?>
         <div class="container__header">
             <h3>Tags Statistiques</h3>
             <i class="fas fa-tag"></i>
@@ -140,7 +187,7 @@
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="name_tag">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div> 
-      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">add</button>
@@ -265,6 +312,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <?php endif; ?>
     </main>
 
 

@@ -21,7 +21,7 @@ include __DIR__.('./includes/navbar.php');
  
             <div class="d-flex justify-content-between mx-4" >
             <h2>Upcoming Matchs</h2>
-            <a href="Wikis/Addwikis"> <button type="submit" class="btn btn-primary">add a new wiki</button>
+            <a href="<?= URL_DIR ?>Wikis/Addwikis"> <button type="submit" class="btn btn-primary">add a new wiki</button>
 </a>
             </div> 
 
@@ -50,7 +50,7 @@ include __DIR__.('./includes/navbar.php');
               <h5 class="card-title"><?= $wiki['title'] ?></h5>
               <p class="card-text"><?= $wiki['content'] ?></p>
               <p>date creation: <?= $wiki['dateCreate'] ?></p>
-              <a href="Wikis/affichage_wiki/?id=<?= $wiki['id']?>" class="btn btn-primary">Go somewhere</a>
+              <a href="<?= URL_DIR ?>Wikis/affichage_wiki/?id=<?= $wiki['id']?>" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>

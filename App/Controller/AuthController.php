@@ -56,11 +56,7 @@ class AuthController extends Controller
 
     }
 
-    function destroy(int $id): void
-    {
-        // TODO: Implement destroy() method.
-    }
-
+    
     // public function update(int $id): void
     // {
     //     // TODO: Implement update() method.

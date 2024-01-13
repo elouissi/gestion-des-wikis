@@ -37,6 +37,12 @@ class WikisModel extends Crud  {
         
         return $this->delete("wikis" ,$id);
     }
+    public function deletewikitag($id)
+    {
+   
+        
+        return $this->deletewt("wikitags" ,$id);
+    }
     public function ajouter_wiki( $title ,$content, $description , $category ,$id_user){
         $data_wiki=[
             
@@ -72,6 +78,19 @@ class WikisModel extends Crud  {
     }
     public function afficher_tags($id){
         return $this->selectTags($id);
+    }
+    public function singlewiki($id){
+        return $this->selectSingleWiki($id);
+    }
+    public function editwiki($title,$content,$description,$category,$id){
+        $updateData = [
+            'title' => $title,
+            'description' => $description,
+            'content' => $content,
+            'categoryId' => $category
+        ];
+        return $this->update("wikis", $updateData , $id);
+
     }
     
 }

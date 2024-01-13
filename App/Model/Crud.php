@@ -87,6 +87,23 @@ class Crud
             echo "Error deleting record: " . $e->getMessage();
         }
     }
+    public function deletewt($tableName, $id)
+    {
+        try {
+            $query = "DELETE FROM $tableName WHERE wikiId = :id";
+
+            // Prepare and execute the SQL statement
+            $stmt = $this->conn->getConnection()->prepare($query);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Output a success message
+            echo "Record deleted successfully!";
+        } catch (PDOException $e) {
+            // Handle errors
+            echo "Error deleting record: " . $e->getMessage();
+        }
+    }
     public function selectWhere()
     {
         $sql = "SELECT * FROM wikis WHERE status = 'publish'";
@@ -132,6 +149,15 @@ class Crud
         $stmt->execute(); 
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    public function selectSingleWiki($id)
+    {
+        $sql = "SELECT * FROM wikis 
+        WHERE userId = $id LIMIT 100";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+  
    
     
 }
