@@ -41,12 +41,14 @@ class WikisController extends Controller {
         $categorys = new DashboardModel;
         $categorys = $categorys->getallcategorys();
         session_start();
-        if(isset($_SESSION['name'])){
+        if($_SESSION['role'] == 2){
         $this->render("View","AddWikis", compact('categorys','tags'));
-        }else{
-                   
-        header("location: /gestion-des-wikis/Auth/Register");
+        }if ($_SESSION['role'] == 1) {
+        header("location: /gestion-des-wikis/home");
+        } else {
+            header("location: /gestion-des-wikis/Auth/Register");        
         }
+        
     }
     public function ajouter_wiki(){
         session_start();
@@ -96,12 +98,16 @@ class WikisController extends Controller {
     public function editwiki(){
         $id = $_POST['id'];
         $title = $_POST['title'];
-        // $tags = $_POST['tags'];
-         $content = $_POST['content'];
+        $tags = $_POST['tags'];
+        $content = $_POST['content'];
         $description = $_POST['description'];
         $category = $_POST['category'];
         $wikis = new WikisModel;
         $editwiki = $wikis->editwiki($title,$content,$description,$category,$id);
+        $deletetag = $wikis->deletewikitag($id);
+        foreach($tags as $tag){
+            $taginsert = $wikis->ajouter_tag($id,$tag);
+            }
         header("location: /gestion-des-wikis/dashboard");
    
 

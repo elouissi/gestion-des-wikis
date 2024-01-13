@@ -59,7 +59,7 @@ class WikisModel extends Crud  {
     }
     public function return_last_id(){
         return  $this->conn->getConnection()->lastInsertId();
-    
+        
     }
     public function ajouter_tag($id,$tag){
         
@@ -92,5 +92,17 @@ class WikisModel extends Crud  {
         return $this->update("wikis", $updateData , $id);
 
     }
+    
+    public function edittag($id,$tag){
+        $updateData = [
+            'wikiId' =>  $id,
+        
+            'tagId' => $tag
+           
+        ];
+        return $this->updatetag("wikitags", $updateData , $id);
+
+    }
+ 
     
 }

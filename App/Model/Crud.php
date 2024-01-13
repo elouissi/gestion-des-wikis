@@ -69,6 +69,27 @@ class Crud
             }
         }
         
+        public function updatetag($tableName, $data, $id)
+        {
+            try {
+                $update_arr = [];
+                foreach ($data as $column => $value) {
+                    $update_arr[] = "$column = :$column";
+                }
+                $update_arr = implode(", ", $update_arr);
+        
+                $query = "UPDATE $tableName SET $update_arr WHERE wikiId = :id";
+                $data['id'] = $id;
+        
+                $stmt = $this->conn->getConnection()->prepare($query);
+                $stmt->execute($data);
+                    
+                echo "Record updated successfully!";
+            } catch (PDOException $e) {
+                echo "Error updating record: " . $e->getMessage();
+            }
+        }
+        
 
     public function delete($tableName, $id)
     {

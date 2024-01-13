@@ -20,7 +20,7 @@ include __DIR__.('./includes/navbar.php');
     <section class="frist-slider">
  
             <div class="d-flex justify-content-between mx-4" >
-            <h2>Upcoming Matchs</h2>
+            <h2>Upcoming Wikis</h2>
             <a href="<?= URL_DIR ?>Wikis/Addwikis"> <button type="submit" class="btn btn-primary">add a new wiki</button>
 </a>
             </div> 
@@ -59,10 +59,10 @@ include __DIR__.('./includes/navbar.php');
       </div>
       <?php include __DIR__.('./includes/footer.php');?>
 
- 
+       <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-      <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
+
 
 </body>
 <!-- Remove the container if you want to extend the Footer to full width. -->

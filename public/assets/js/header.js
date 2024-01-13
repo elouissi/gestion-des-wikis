@@ -1,9 +1,4 @@
-/** 
- * @author Yassin elouissi
- * @license MIT
-*/
  
-
 document.addEventListener("DOMContentLoaded", () => {
     const burgerMenuBtns = document.querySelectorAll(".nav__group__burger");
 

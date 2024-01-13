@@ -30,7 +30,7 @@
             </div>
             <div class="nav__links" style="    margin: auto;">
                 <ul>
-                  <a href="list_stagiaires.html"> <li>Home</li> </a> 
+                  <a href="<?= URL_DIR ?>home"> <li>Home</li> </a> 
              
                 </ul>
             </div>
@@ -44,8 +44,8 @@
             </div>
             <div class="side_nav__actions">
             <?php if(isset($_SESSION['name'])){ ?>
-                    <a href="#" class="btn btn-primary"><?= $_SESSION['name']?></a>
-                    <a href="<?= URL_DIR ?>Auth/log_out" class="nav__actions__login">Log out</a>
+                    <a href="<?= URL_DIR ?>dashboard" class="nav__actions1__login btn-primary"><?= $_SESSION['name']?></a>
+                    <a href="<?= URL_DIR ?>Auth/log_out" class="nav__actions1__signup">Log out</a>
                 <?php } else{ ?>
                     <a href="<?= URL_DIR ?>Auth/sign_in"> <button class="nav__actions1__login">Log In</button></a>
                 <a href="<?= URL_DIR ?>Auth/Register"><button class="nav__actions1__signup">Sign Up</button></a>
@@ -77,16 +77,22 @@
             </div>
             <div class="side__nav__links">
                 <ul>
-                    <li>home</li>
-                    <li>about</li>
+                <a href="<?= URL_DIR ?>home"> <li>Home</li> </a> 
+                <a href="<?= URL_DIR ?>dashboard"> <li>wikis</li> </a> 
                
                 </ul>
             </div>
             <div class="side_nav__actions">
-              <a href=""> <button class="nav__actions__login">Log In</button></a> 
-            <a href=""> <button class="nav__actions__signup">Sign Up</button></a> 
+            <?php if(isset($_SESSION['name'])){ ?>
+              <a href="<?= URL_DIR ?>dashboard"> <button class="nav__actions__login"><?= $_SESSION['name']?></button></a> 
+            <a href="<?= URL_DIR ?>Auth/log_out"> <button class="nav__actions__signup">Log out</button></a> 
+            <?php }else{ ?>
+                <a href="<?= URL_DIR ?>Auth/sign_in"> <button class="nav__actions__login">Log In</button></a>
+                <a href="<?= URL_DIR ?>Auth/Register"><button class="nav__actions__login">Sign Up</button></a>
+                <?php } ?>
             </div>
         </nav>
     </header>
+                     
 
  
