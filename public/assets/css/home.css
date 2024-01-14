@@ -5,7 +5,7 @@
     color: #FB6109;
 
 /* Display/Subheading/01 */
-font-family: Roboto;
+ 
 font-size: 30px;
 font-style: normal;
 font-weight: 700;
@@ -43,8 +43,7 @@ line-height: normal;
 }
 #first-section h2 {
     color: var(--Text-Default, #1B1B25);
-    /* Display/Subheading/01 */
-    font-family: Roboto;
+
     font-size: 30px;
     font-style: normal;
     font-weight: 700;

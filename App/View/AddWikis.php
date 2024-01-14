@@ -37,7 +37,7 @@
 
     <!-- Titre -->
     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-        <input class="input100" type="text" name="title" placeholder="Title">
+        <input class="input100" type="text" name="title" placeholder="Title"required>
         <span class="focus-input100"></span>
         <span class="symbol-input100">
             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
 
     <!-- Contenu -->
     <div class="wrap-input100 validate-input" data-validate="Password is required">
-        <textarea class="input100" type="text" name="content" placeholder="Content"></textarea>
+        <textarea class="input100" type="text" name="content" placeholder="Content"required></textarea>
         <span class="focus-input100"></span>
         <span class="symbol-input100">
             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -55,7 +55,7 @@
 
     <!-- Description -->
     <div class="wrap-input100 validate-input" data-validate="Password is required">
-        <textarea class="input100" type="text" name="description" placeholder="Description"></textarea>
+        <textarea class="input100" type="text" name="description" placeholder="Description" required></textarea>
         <span class="focus-input100"></span>
         <span class="symbol-input100">
             <i class="fa fa-lock" aria-hidden="true"></i>

@@ -93,6 +93,7 @@
             </div>
         </nav>
     </header>
-                     
+    <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
+        
 
  

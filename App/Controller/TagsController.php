@@ -22,6 +22,7 @@ class TagsController extends Controller {
 
         $Tags = new TagsModel;
          $Tags->delete_tags($id);
+         $Tags->delete_wikitag($id);
         
         header("location: /gestion-des-wikis/dashboard");
     }

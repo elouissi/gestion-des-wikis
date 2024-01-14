@@ -103,6 +103,9 @@ class WikisModel extends Crud  {
         return $this->updatetag("wikitags", $updateData , $id);
 
     }
+    public function searchwikis($input){
+        return $this->search($input);
+    }
  
     
 }

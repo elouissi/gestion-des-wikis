@@ -125,6 +125,23 @@ class Crud
             echo "Error deleting record: " . $e->getMessage();
         }
     }
+    public function delete_wikitags($tableName, $id)
+    {
+        try {
+            $query = "DELETE FROM $tableName WHERE tagId = :id";
+
+            // Prepare and execute the SQL statement
+            $stmt = $this->conn->getConnection()->prepare($query);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Output a success message
+            echo "Record deleted successfully!";
+        } catch (PDOException $e) {
+            // Handle errors
+            echo "Error deleting record: " . $e->getMessage();
+        }
+    }
     public function selectWhere()
     {
         $sql = "SELECT * FROM wikis WHERE status = 'publish'";
@@ -174,6 +191,17 @@ class Crud
     {
         $sql = "SELECT * FROM wikis 
         WHERE userId = $id LIMIT 100";
+        $stmt = $this->conn->getConnection()->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function search($input){
+                $sql = "SELECT wikis.*, 
+                users.username AS user_name,
+                categorys.name AS category_name
+        FROM wikis  
+        JOIN users ON wikis.userId = users.id  
+        JOIN categorys ON wikis.categoryId = categorys.id    WHERE title LIKE '%{$input}%'  OR status =  'publish'";
         $stmt = $this->conn->getConnection()->prepare($sql);
         $stmt->execute(); 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

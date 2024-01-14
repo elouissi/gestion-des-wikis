@@ -34,43 +34,55 @@ include __DIR__.('./includes/navbar.php');
 					<img src="<?= URL_DIR ?>public/assets/images/logo.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="create" method="POST" >
+				<form class="login100-form validate-form" action="create" method="POST" id="registerForm" >
 					<span class="login100-form-title">
 						Register
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="name" placeholder="name">
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="name" id="username" placeholder="name" required> 
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="password" name="password" placeholder="password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
+					<span id="usernameError" class="error"></span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="confirmation_password" placeholder="password validation">
+<br>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz "required>
+						<input class="input100" type="email" name="email" id="email"  placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<span id="emailError" class="error"></span>
+
+<br>
+					<div class="wrap-input100 validate-input" required>
+						<input class="input100" type="password" name="password" id="password" required placeholder="password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
+					<span id="passwordError" class="error"></span>
+
+<br>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="confirmation_password" id="password"  required placeholder="password validation">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					<span id="passwordError" class="error"></span>
+
+<br>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">
+						<button class="login100-form-btn" type="submit" onclick="validateForm()">
 							create account
 						</button>
 					</div>
@@ -89,6 +101,7 @@ include __DIR__.('./includes/navbar.php');
  
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+ 
 
 </body>
 	<?php include __DIR__.('./includes/footer.php');?>
@@ -104,6 +117,8 @@ include __DIR__.('./includes/navbar.php');
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
       <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
+      <script src="<?= URL_DIR ?>public/assets/js/register.js"></script>
+
 
 </body>
 

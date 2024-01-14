@@ -34,41 +34,36 @@ include __DIR__.('./includes/navbar.php');
 					<img src="<?= URL_DIR ?>public/assets/images/logo.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="login" method="POST">
+				<form class="login100-form validate-form" action="login" method="POST" id="registerForm"" >
 					<span class="login100-form-title">
 						Member Login
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
+						<input class="input100" type="email" id="email" name="email" placeholder="Email" required> 
+						<p id="emailError" ></p>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
+						<input class="input100" type="password" id="password" name="password" placeholder="Password" required >
+					 <p id="passwordError" ></p>	
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">
+						<button class="login100-form-btn" type="submit" onclick="validateForm()" >
 							Login
 						</button>
 					</div>
 
 				 
 
-					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
+			 
 				</form>
 			</div>
 		</div>
@@ -83,19 +78,21 @@ include __DIR__.('./includes/navbar.php');
 	<script src="js/main.js"></script>
 
 </body>
-	<?php include __DIR__.('./includes/footer.php');?>
- 
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
+<?php include __DIR__.('./includes/footer.php');?>
+
 <!--===============================================================================================-->
 	<script src="<?= URL_DIR ?>public/assets/js/main.js"></script>
     <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Inclure Bootstrap JS (et jQuery) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
+      <script src="<?= URL_DIR ?>public/assets/js/log_in.js"></script>
 
 </body>
 

@@ -10,7 +10,7 @@
 
 <body class="dark:bg-gray-800  bg-gray-300">
     <div class="mt-24 flex flex-col justify-center text-center">
-        <h1 class="mb-4 text-6xl font-poppins tracking-wider font-semibold text-green-700">404</h1>
+        <h1 class="mb-4 text-6xl font-poppins tracking-wider text-green-700">404</h1>
         <p class="mb-4 text-lg font-poppins tracking-wider text-gray-600">Oops! Looks like you're lost.</p>
         <div class="animate-bounce">
             <svg class="mx-auto h-16 w-16 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">

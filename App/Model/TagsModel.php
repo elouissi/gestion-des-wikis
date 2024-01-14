@@ -30,6 +30,9 @@ class TagsModel  extends Crud  {
         ];
         return $this->update("Tags",$updateData,$id);
     }
+   public function delete_wikitag($id){
+    return $this->delete_wikitags("wikitags",$id);
+   }
     
  
 }

@@ -1,86 +1,84 @@
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Inclure jQuery depuis le CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Inclure Bootstrap CSS depuis le CDN si nécessaire -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 </head>
 <body>
-<?php 
-include __DIR__.('./includes/navbar.php');
-?>
-  
 
+<?php include __DIR__.'/includes/navbar.php'; ?>
 
-    <section class="hero-section d-flex flex-column align-items-center  " id="hero-section" >
-        <img class="w-100" src="<?= URL_DIR ?>public/assets/images/youWiki.svg" alt="backgraound-hero" >
-        
-        <div class="input-group" id="hero-field" >
-            <input type="text"id="hero_field" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons">
-            <button class="btn btn-primary "  id="btn-search" type="button"><i class="bi bi-search"></i></button>
-            <button class="btn btn-info  " id="btn-search" type="button"><i class="bi bi-calendar3"></i></button> 
-          </div> 
-    </section>
-    <section class="frist-slider">
- 
-            <div class="d-flex justify-content-between mx-4" >
-            <h2>Upcoming Wikis</h2>
-            <a href="<?= URL_DIR ?>Wikis/Addwikis"> <button type="submit" class="btn btn-primary">add a new wiki</button>
-</a>
-            </div> 
+<section class="hero-section d-flex flex-column align-items-center" id="hero-section">
+    <img class="w-100" src="<?= URL_DIR ?>public/assets/images/youWiki.svg" alt="background-hero">
+    
+    <div class="input-group" id="hero-field">
+        <input type="text" id="hero_field" class="form-control" placeholder="Recipient's username" >
+        <button class="btn btn-primary" id="btn-search" type="button"><i class="bi bi-search"></i></button>
+        <button class="btn btn-info" id="btn-calendar" type="button"><i class="bi bi-calendar3"></i></button> 
+    </div> 
+</section>
 
-   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content" style="   width: 670px; height: 636px;     padding: 27px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-     
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Understood</button>
-      </div>
-  </div>
+<section class="frist-slider">
+    <div class="d-flex justify-content-between mx-4">
+        <h2>Upcoming Wikis</h2>
+        <a href="<?= URL_DIR ?>Wikis/Addwikis">
+            <button type="submit" class="btn btn-primary">Add a new wiki</button>
+        </a>
+    </div> 
 
-    </div>
-    </div>
-  </div>
-</div>
-    <div class="row mx-4"   >
-    <?php foreach ($allWikis as $wiki): ?>
-        <div class="col-sm-4" style="margin-bottom: 20px;" >
-          <div class="card" >
-            <div class="card-body">
-              <h5 class="card-title"><?= $wiki['title'] ?></h5>
-              <p class="card-text"><?= $wiki['content'] ?></p>
-              <p>date creation: <?= $wiki['dateCreate'] ?></p>
-              <a href="<?= URL_DIR ?>Wikis/affichage_wiki/?id=<?= $wiki['id']?>" class="btn btn-primary">Go somewhere</a>
+    <!-- ... Autres éléments du slider ... -->
+
+    <div class="row mx-4" id="search_list">
+        <?php foreach ($allWikis as $wiki): ?>
+            <div class="col-sm-4" style="margin-bottom: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $wiki['title'] ?></h5>
+                        <p class="card-text"><?= $wiki['content'] ?></p>
+                        <p>Date creation: <?= $wiki['dateCreate'] ?></p>
+                        <a href="<?= URL_DIR ?>Wikis/affichage_wiki/?id=<?= $wiki['id'] ?>" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-     <?php endforeach ?>   
-      
-      </div>
-      <?php include __DIR__.('./includes/footer.php');?>
+        <?php endforeach ?>   
+    </div>
+</section>
 
-       <script src="<?= URL_DIR ?>public/assets/js/header.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+ 
+<script>
+     // Assurez-vous que le DOM est chargé avant d'exécuter du code jQuery
+    $(document).ready(function(){
+      
+
+        $("#hero_field").keyup(function(){
+            var input = $(this).val(); 
+            if(input == "") input = 'all';
+
+            $.ajax({
+    url: "http://localhost/gestion-des-wikis/Home/search",
+    method: "POST",
+    data: { input: input },
+    dataType: "json", // Indiquer au serveur que nous attendons du JSON en réponse
+    success: function (data) {
+        // Manipuler les données JSON ici
+          // Afficher les données dans la console pour le débogage
+
+        // Exemple : afficher les données dans l'élément avec l'ID "search_list"
+        $("#search_list").html(JSON.stringify(data));
+    }
+  }
+        )})
+});
+</script>
+<?php include __DIR__.'/includes/footer.php'; ?>
+
 
 
 </body>
-<!-- Remove the container if you want to extend the Footer to full width. -->
-
-<!-- End of .container -->
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

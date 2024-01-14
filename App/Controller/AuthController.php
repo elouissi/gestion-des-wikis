@@ -26,8 +26,7 @@ class AuthController extends Controller
      
         session_start();
          
-        $this->Register();
-
+ 
          // TODO: Implement create() method.
         $name = $this->validation_input($_POST["name"]);
          $email = $this->validation_input($_POST["email"]);
