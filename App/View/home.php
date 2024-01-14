@@ -61,20 +61,15 @@
             if(input == "") input = 'all';
 
             $.ajax({
-    url: "http://localhost/gestion-des-wikis/Home/search",
-    method: "POST",
-    data: { input: input },
-    dataType: "json", // Indiquer au serveur que nous attendons du JSON en réponse
-    success: function (data) {
-        // Manipuler les données JSON ici
-          // Afficher les données dans la console pour le débogage
-
-        // Exemple : afficher les données dans l'élément avec l'ID "search_list"
-        $("#search_list").html(JSON.stringify(data));
-    }
-  }
-        )})
-});
+                url: "http://localhost/gestion-des-wikis/Home/search",
+                method: "POST",
+                data: {input: input},
+                success: function(data){
+                    $("#search_list").html(data);
+                }
+            });
+        });
+    });
 </script>
 <?php include __DIR__.'/includes/footer.php'; ?>
 

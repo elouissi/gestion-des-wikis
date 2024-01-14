@@ -201,7 +201,7 @@ class Crud
                 categorys.name AS category_name
         FROM wikis  
         JOIN users ON wikis.userId = users.id  
-        JOIN categorys ON wikis.categoryId = categorys.id    WHERE title LIKE '%{$input}%'  OR status =  'publish'";
+        JOIN categorys ON wikis.categoryId = categorys.id    WHERE title LIKE '%{$input}%'  AND status =  'publish'";
         $stmt = $this->conn->getConnection()->prepare($sql);
         $stmt->execute(); 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
